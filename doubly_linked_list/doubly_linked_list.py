@@ -226,6 +226,6 @@ ll.add_to_tail(5)
 # ll.remove_from_tail()
 
 
-print(ll)
+print(ll.get_max())
 # print(ll.head.value)
 # print(ll)
