@@ -9,6 +9,8 @@ This part of the project comprises two days:
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
    on the BSTNode class.
 """
+from queue import Queue
+from stack import Stack
 
 
 class BSTNode:
@@ -84,6 +86,7 @@ class BSTNode:
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
+        # recursion method
         cur_node = self
         fn(cur_node.value)
         if cur_node.left is not None:
@@ -91,22 +94,50 @@ class BSTNode:
         if cur_node.right is not None:
             cur_node.right.for_each(fn)
 
+        # # iterative method
+        # fn(cur_node.value)
+        # while cur_node.left:
+        #     cur_node = cur_node.left
+        #     fn(cur_node)
+
     # Part 2 -----------------------
 
-    # # Print all the values in order from low to high
-    # # Hint:  Use a recursive, depth first traversal
-    # def in_order_print(self):
-    #     pass
+    # Print all the values in order from low to high
+    # Hint:  Use a recursive, depth first traversal
+    def in_order_print(self):
+        if self:
+            if self.left:
+                self.left.in_order_print()
+            print(self.value)
 
-    # # Print the value of every node, starting with the given node,
-    # # in an iterative breadth first traversal
-    # def bft_print(self):
-    #     pass
+            if self.right:
+                self.right.in_order_print()
 
-    # # Print the value of every node, starting with the given node,
-    # # in an iterative depth first traversal
-    # def dft_print(self):
-    #     pass
+    # Print the value of every node, starting with the given node,
+    # in an iterative breadth first traversal
+    def bft_print(self, node):
+        q = Queue()
+        q.enqueue(node)
+        while q.size > 0:
+            cur_node = q.dequeue()
+            print(cur_node.value)
+            if cur_node.left:
+                q.enqueue(cur_node.left)
+            if cur_node.right:
+                q.enqueue(cur_node.right)
+    # Print the value of every node, starting with the given node,
+    # in an iterative depth first traversal
+
+    def dft_print(self, node):
+        s = Stack()
+        s.push(node)
+        while s.size > 0:
+            cur_node = s.pop()
+            print(cur_node.value)
+            if cur_node.right:
+                s.push(cur_node.right)
+            if cur_node.left:
+                s.push(cur_node.left)
 
     # # Stretch Goals -------------------------
     # # Note: Research may be required
@@ -123,16 +154,19 @@ class BSTNode:
 """
 This code is necessary for testing the `print` methods
 """
-bst = BSTNode(1)
+bst = BSTNode(15)
 
-bst.insert(8)
+bst.insert(10)
+bst.insert(20)
 bst.insert(5)
-bst.insert(7)
-bst.insert(6)
-bst.insert(3)
-bst.insert(4)
-bst.insert(2)
+bst.insert(12)
+bst.insert(18)
+bst.insert(25)
 
+bst.dft_print(bst)
+
+
+# bst.in_order_print()
 # bst.bft_print()
 # bst.dft_print()
 

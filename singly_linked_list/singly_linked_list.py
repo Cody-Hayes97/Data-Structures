@@ -87,12 +87,23 @@ class LinkedList:
     #     cur_node = self.head
     #     while cur_node
 
+# def reverse_ll(self):
+#     # plan
+#     cur_node = self.head
+#     nxt = cur_node.next_node
+#     # head points to none
+#     cur_node.set_next(None)
+#     prev_node = cur_node
+#     while next_node is not None:
+#         next_node =
+#         next_node.set_next(prev_node)
 
-linked_list = LinkedList()
-linked_list.add_to_head(0)
-linked_list.add_to_tail(1)
-print(linked_list.tail.value)
-linked_list.add_to_tail(2)
-print(linked_list.tail.value)
-linked_list.remove_tail()
-print(linked_list.tail.value)
+
+# linked_list = LinkedList()
+# linked_list.add_to_head(0)
+# linked_list.add_to_tail(1)
+# print(linked_list.tail.value)
+# linked_list.add_to_tail(2)
+# print(linked_list.tail.value)
+# linked_list.remove_tail()
+# print(linked_list.tail.value)
